@@ -3,14 +3,19 @@ import { ArrowRight, Globe, Settings, BarChart3 } from "lucide-react";
 import { SiteHeader, Wordmark } from "@/components/commercial/SiteHeader";
 import hero from "@/assets/hero-workshop.png.asset.json";
 import creator from "@/assets/creator-core.png.asset.json";
-import fleet from "@/assets/fleetflow-tablet.jpg";
+import fleetAsset from "@/assets/fleetflow-demo-showcase.png.asset.json";
 import tierFrame from "@/assets/tier-frame.jpg";
+import tierLaunch from "@/assets/tier-launch-frame.png.asset.json";
 import svcBrand from "@/assets/svc-brand.jpg";
 import svcAuto from "@/assets/svc-automation.jpg";
 import svcCrm from "@/assets/svc-crm.jpg";
-import svcLocal from "@/assets/svc-local.jpg";
-import svcContent from "@/assets/svc-content.jpg";
+import svcLocalAsset from "@/assets/service-local-search.png.asset.json";
+import svcContentAsset from "@/assets/service-content-social.png.asset.json";
 import svcDash from "@/assets/svc-dashboards.jpg";
+
+const fleet = fleetAsset.url;
+const svcLocal = svcLocalAsset.url;
+const svcContent = svcContentAsset.url;
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -123,7 +128,7 @@ function Index() {
           <div className="mt-8 grid gap-5 md:grid-cols-3">
             {tiers.map((t) => (
               <article key={t.n} className="flex flex-col border border-border bg-card">
-                <img src={tierFrame} alt="Illustrative laptop frame — product screenshot coming soon" width={1024} height={640} loading="lazy" className="aspect-[16/10] w-full object-cover" />
+                <img src={t.n === "01" ? tierLaunch.url : tierFrame} alt={t.n === "01" ? "Launch tier website frame" : "Illustrative laptop frame — product screenshot coming soon"} width={1586} height={992} loading="lazy" className="aspect-[16/10] w-full object-cover" />
                 <div className="flex flex-1 flex-col p-5">
                   <p className="font-display text-sm uppercase">Tier {t.n}</p>
                   <h3 className="mt-1 text-2xl">{t.title}</h3>
@@ -170,7 +175,7 @@ function Index() {
               <TextLink className="text-lg">Explore this system<span className="sr-only">: FleetFlow</span></TextLink>
             </div>
             <figure>
-              <img src={fleet} alt="FleetFlow demo workspace on a rugged tablet" width={1280} height={960} loading="lazy" className="w-full" />
+              <img src={fleet} alt="FleetFlow demo workspace showcase" width={1586} height={992} loading="lazy" className="w-full" />
               <figcaption className="eyebrow bg-ink py-3 text-center text-ink-foreground">Demo workspace · Sample data</figcaption>
             </figure>
           </div>
